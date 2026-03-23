@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brayan | Web Designer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:25px 60px;
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(10px);
+      background: rgba(2,6,23,0.6);
+    }
+
+    nav a {
+      margin-left:25px;
+      color:#cbd5f5;
+      text-decoration:none;
+      transition:.3s;
+    }
+
+    nav a:hover { color:white; }
+
+    .hero {
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      perspective:1000px;
+    }
+
+    .hero-content {
+      transform-style: preserve-3d;
+      transition: transform .2s ease;
+    }
+
+    .hero h2 {
+      font-size:60px;
+      background: linear-gradient(90deg,#22c55e,#4f46e5);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p {
+      color:#94a3b8;
+      max-width:600px;
+      margin:20px auto;
+    }
+
+    .btn {
+      padding:14px 30px;
+      border-radius:999px;
+      background:linear-gradient(90deg,#22c55e,#4f46e5);
+      color:white;
+      text-decoration:none;
+      display:inline-block;
+      margin-top:20px;
+      box-shadow:0 10px 30px rgba(79,70,229,0.5);
+    }
+
+    .section {
+      padding:120px 40px;
+      max-width:1100px;
+      margin:auto;
+    }
+
+    .section h3 {
+      text-align:center;
+      margin-bottom:60px;
+      font-size:36px;
+    }
+
+    .projects {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      perspective:1000px;
+    }
+
+    .card {
+      background:#0f172a;
+      border-radius:20px;
+      overflow:hidden;
+      transform-style:preserve-3d;
+      transition:transform .3s;
+    }
+
+    .card img {
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .card-content {
+      padding:20px;
+    }
+
+    .card:hover {
+      transform: rotateY(8deg) rotateX(8deg) scale(1.05);
+    }
+
+    .about, .contact {
+      text-align:center;
+    }
+
+    .about p, .contact p {
+      color:#94a3b8;
+      max-width:600px;
+      margin:auto;
+    }
+
+    footer {
+      text-align:center;
+      padding:30px;
+      color:#64748b;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SKYX</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#portfolio">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content" id="hero3d">
+    <h2>Premium Website Designer</h2>
+    <p>I design high-end websites with modern visuals and strong performance.</p>
+    <a class="btn" href="#contact">Work With Me</a>
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <h3>My Work</h3>
+  <div class="projects">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" />
+      <div class="card-content">
+        <h4>Business Website</h4>
+        <p>Professional design for companies.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a" />
+      <div class="card-content">
+        <h4>Landing Page</h4>
+        <p>Optimized for conversions.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" />
+      <div class="card-content">
+        <h4>Portfolio</h4>
+        <p>Modern and minimal design.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <h3>About Me</h3>
+  <p>I create modern, clean and powerful websites that help businesses grow and stand out online.</p>
+</section>
+
+<section id="contact" class="section contact">
+  <h3>Contact Me</h3>
+  <p>Let's build something great together.</p>
+  <a class="btn" href="mailto:brayantossou28@gmail.com">Send Email</a>
+</section>
+
+<footer>
+  <p>© 2026 Brayan</p>
+  <p>brayantossou28@gmail.com</p>
+</footer>
+
+<script>
+  const hero = document.getElementById('hero3d');
+
+  window.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) / 25;
+    const y = (window.innerHeight / 2 - e.pageY) / 25;
+
+    hero.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+  });
+
+  window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    hero.style.transform += ` translateZ(${scroll * 0.2}px)`;
+  });
+</script>
+
+</body>
+</html>
